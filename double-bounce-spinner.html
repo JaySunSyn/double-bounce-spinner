@@ -1,0 +1,109 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+An element providing a solution to no problem in particular.
+
+Example:
+
+    <double-bounce-spinner></double-bounce-spinner>
+
+@group Seed Elements
+@element double-bounce-spinner
+@demo demo/index.html
+@hero hero.svg
+-->
+<dom-module id="double-bounce-spinner">
+
+  <template>
+    <style>
+      :host {
+        display: block;
+        box-sizing: border-box;
+      }
+
+      .hidden {
+        opacity: 0;
+      }
+  
+      .sk-double-bounce {
+        width: 40px;
+        height: 40px;
+        position: relative;
+        margin: 40px auto; 
+      }
+      .sk-double-bounce .sk-child {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: #333;
+        opacity: 0.6;
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-animation: sk-doubleBounce 2s infinite ease-in-out;
+                animation: sk-doubleBounce 2s infinite ease-in-out; 
+      }
+      .sk-double-bounce .sk-double-bounce2 {
+        -webkit-animation-delay: -1.0s;
+                animation-delay: -1.0s; 
+      }
+      @-webkit-keyframes sk-doubleBounce {
+      0%, 100% {
+        -webkit-transform: scale(0);
+                transform: scale(0); }
+      50% {
+        -webkit-transform: scale(1);
+                transform: scale(1); } }
+    @keyframes sk-doubleBounce {
+      0%, 100% {
+        -webkit-transform: scale(0);
+                transform: scale(0); }
+      50% {
+        -webkit-transform: scale(1);
+                transform: scale(1); } }
+  </style>
+    
+    <div id="container" class="sk-double-bounce">
+      <div class="sk-child sk-double-bounce1"></div>
+      <div class="sk-child sk-double-bounce2"></div>
+    </div>
+
+  </template>
+
+</dom-module>
+
+<script>
+
+  Polymer({
+
+    is: 'double-bounce-spinner',
+
+    properties: {
+      active: {
+        type: Boolean,
+        value: false,
+        observer: '_activeChanged'
+      }
+
+    },
+
+    _activeChanged: function () {
+      if (this.active) {
+        this.$.container.classList.remove('hidden');
+      } else {
+        this.$.container.classList.add('hidden');
+      }
+    }
+
+  });
+
+</script>
