@@ -4,7 +4,7 @@
   "authors": [
     "Jalal Fathi <jfathi.mail@gmail.com> (http://jalal.io)"
   ],
-  "description": "A double bounce spinner.",
+  "description": "A double bounce spinner (pulsing circle).",
   "keywords": [
     "web-component",
     "web-components",
